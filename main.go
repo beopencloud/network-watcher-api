@@ -13,7 +13,6 @@ import (
 	//	"github.com/beopencloud/network-watcher-api-mock/event"
 	//"k8s.io/client-go/dynamic"
 	//"k8s.io/client-go/kubernetes"
-
 )
 
 func main() {
@@ -69,8 +68,6 @@ func HandlePost(w http.ResponseWriter, r *http.Request) {
 	res, _ := ioutil.ReadAll(r.Body)
 	ParsingData(res)
 	io.WriteString(w, "post\n")
-	return
-
 	return
 }
 
