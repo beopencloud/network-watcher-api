@@ -22,8 +22,6 @@ func main() {
 
 	// private views
 	http.HandleFunc("/service/post", PostOnly(BasicAuth(HandlePost)))
-	http.HandleFunc("/service/put", PutOnly(BasicAuth(HandlePut)))
-	http.HandleFunc("/service/delete", DeleteOnly(BasicAuth(HandleDelete)))
 
 	log.Fatal(http.ListenAndServe(":80", nil))
 
@@ -75,23 +73,6 @@ func exitOnErr(err error) {
 	if err != nil {
 		log.Fatal(err)
 	}
-}
-
-func HandlePut(w http.ResponseWriter, r *http.Request) {
-	log.Println("=============")
-	log.Println("UPDATE EVENT")
-	res, _ := ioutil.ReadAll(r.Body)
-	io.WriteString(w, "post\n")
-	ParsingData(res)
-
-}
-
-func HandleDelete(w http.ResponseWriter, r *http.Request) {
-	log.Println("============")
-	log.Println("DELETE EVENT")
-	res, _ := ioutil.ReadAll(r.Body)
-	ParsingData(res)
-
 }
 
 type Result struct {

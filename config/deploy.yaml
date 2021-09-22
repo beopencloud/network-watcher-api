@@ -35,7 +35,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: network-api-test
+  name: network-api
   namespace: operator
   labels: 
     app: service-network-api
