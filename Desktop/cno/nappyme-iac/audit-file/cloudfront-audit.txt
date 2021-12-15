@@ -1,0 +1,38 @@
+2021-12-01T15:10:07.137Z	[34mINFO[0m	Detected config files: 2
+
+main.tf (terraform)
+===================
+Tests: 15 (SUCCESSES: 10, FAILURES: 5, EXCEPTIONS: 0)
+Failures: 5 (UNKNOWN: 0, LOW: 0, MEDIUM: 2, HIGH: 1, CRITICAL: 2)
+
++------------------------------------------+--------------+------------------------------------------+----------+----------------------------------------------------------------+
+|                   TYPE                   |  MISCONF ID  |                  CHECK                   | SEVERITY |                            MESSAGE                             |
++------------------------------------------+--------------+------------------------------------------+----------+----------------------------------------------------------------+
+|   Terraform Security Check powered by    | AVD-AWS-0010 | Cloudfront distribution should have      |  MEDIUM  | Resource 'aws_cloudfront_distribution.cloudFront_nappyme'      |
+|                  tfsec                   |              | Access Logging configured                |          | does not have Access Logging configured                        |
+|                                          |              |                                          |          | -->tfsec.dev/docs/aws/cloudfront/enable-logging#aws/cloudfront |
++                                          +              +                                          +          +----------------------------------------------------------------+
+|                                          |              |                                          |          | Resource 'aws_cloudfront_distribution.nappyme_cloudfront'      |
+|                                          |              |                                          |          | does not have Access Logging configured                        |
+|                                          |              |                                          |          | -->tfsec.dev/docs/aws/cloudfront/enable-logging#aws/cloudfront |
++                                          +--------------+------------------------------------------+----------+----------------------------------------------------------------+
+|                                          | AVD-AWS-0011 | CloudFront distribution does not have a  |   HIGH   | Resource 'aws_cloudfront_distribution.nappyme_cloudfront'      |
+|                                          |              | WAF in front.                            |          | does not have a WAF in front of it.                            |
+|                                          |              |                                          |          | -->tfsec.dev/docs/aws/cloudfront/enable-waf#aws/cloudfront     |
++                                          +--------------+------------------------------------------+----------+----------------------------------------------------------------+
+|                                          | AVD-AWS-0012 | CloudFront distribution allows           | CRITICAL | Resource 'aws_cloudfront_distribution.cloudFront_nappyme'      |
+|                                          |              | unencrypted (HTTP) communications.       |          | defines a CloudFront distribution that                         |
+|                                          |              |                                          |          | allows unencrypted communications.                             |
+|                                          |              |                                          |          | -->tfsec.dev/docs/aws/cloudfront/enforce-https#aws/cloudfront  |
++                                          +              +                                          +          +----------------------------------------------------------------+
+|                                          |              |                                          |          | Resource 'aws_cloudfront_distribution.nappyme_cloudfront'      |
+|                                          |              |                                          |          | defines a CloudFront distribution that                         |
+|                                          |              |                                          |          | allows unencrypted communications.                             |
+|                                          |              |                                          |          | -->tfsec.dev/docs/aws/cloudfront/enforce-https#aws/cloudfront  |
++------------------------------------------+--------------+------------------------------------------+----------+----------------------------------------------------------------+
+
+variables.tf (terraform)
+========================
+Tests: 10 (SUCCESSES: 10, FAILURES: 0, EXCEPTIONS: 0)
+Failures: 0 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 0, CRITICAL: 0)
+

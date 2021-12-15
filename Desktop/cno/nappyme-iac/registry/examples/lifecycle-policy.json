@@ -1,0 +1,49 @@
+{
+    "rules": [
+        {
+            "action": {
+                "type": "expire"
+            },
+            "selection": {
+                "tagStatus": "tagged",
+                "countType": "sinceImagePushed",
+                "countUnit": "days",
+                "countNumber": 15,
+                "tagPrefixList" : [
+                    "dev-"
+                ]
+            },
+            "rulePriority": 1,
+            "description": "Only save last 15 dev images"
+        },
+        {
+            "action": {
+                "type": "expire"
+            },
+            "selection": {
+                "tagStatus": "tagged",
+                "countType": "sinceImagePushed",
+                "countUnit": "days",
+                "countNumber": 15,
+                "tagPrefixList" : [
+                    "prod-"
+                ]
+            },
+            "rulePriority": 2,
+            "description": "Only save last 15 master images"
+        },
+        {
+            "action": {
+              "type": "expire"
+            },
+            "selection": {
+              "countType": "imageCountMoreThan",
+              "countNumber": 2,
+              "tagStatus": "untagged"
+            },
+            "description": "Why we should save this?",
+            "rulePriority": 20
+          }
+
+    ]
+}

@@ -1,0 +1,33 @@
+2021-12-01T15:10:46.309Z	[34mINFO[0m	Detected config files: 2
+
+main.tf (terraform)
+===================
+Tests: 12 (SUCCESSES: 8, FAILURES: 4, EXCEPTIONS: 0)
+Failures: 4 (UNKNOWN: 0, LOW: 0, MEDIUM: 3, HIGH: 1, CRITICAL: 0)
+
++------------------------------------------+--------------+------------------------------------------+----------+-------------------------------------------------------------+
+|                   TYPE                   |  MISCONF ID  |                  CHECK                   | SEVERITY |                           MESSAGE                           |
++------------------------------------------+--------------+------------------------------------------+----------+-------------------------------------------------------------+
+|   Terraform Security Check powered by    | AVD-AWS-0088 | Unencrypted S3 bucket.                   |   HIGH   | Resource 'aws_s3_bucket.nappyme_bucket'                     |
+|                  tfsec                   |              |                                          |          | defines an unencrypted S3 bucket (missing                   |
+|                                          |              |                                          |          | server_side_encryption_configuration block).                |
+|                                          |              |                                          |          | -->tfsec.dev/docs/aws/s3/enable-bucket-encryption#aws/s3    |
++                                          +--------------+------------------------------------------+----------+-------------------------------------------------------------+
+|                                          | AVD-AWS-0089 | S3 Bucket does not have logging enabled. |  MEDIUM  | Resource 'aws_s3_bucket.nappyme_bucket'                     |
+|                                          |              |                                          |          | does not have logging enabled.                              |
+|                                          |              |                                          |          | -->tfsec.dev/docs/aws/s3/enable-bucket-logging#aws/s3       |
++                                          +--------------+------------------------------------------+          +-------------------------------------------------------------+
+|                                          | AVD-AWS-0090 | S3 Data should be versioned              |          | Resource 'aws_s3_bucket.nappyme_bucket'                     |
+|                                          |              |                                          |          | does not have versioning enabled                            |
+|                                          |              |                                          |          | -->tfsec.dev/docs/aws/s3/enable-versioning#aws/s3           |
++                                          +--------------+------------------------------------------+          +-------------------------------------------------------------+
+|                                          | AVD-AWS-0094 | S3 buckets should each define an         |          | Resource aws_s3_bucket.nappyme_bucket has no                |
+|                                          |              | aws_s3_bucket_public_access_block        |          | associated aws_s3_bucket_public_access_block.               |
+|                                          |              |                                          |          | -->tfsec.dev/docs/aws/s3/specify-public-access-block#aws/s3 |
++------------------------------------------+--------------+------------------------------------------+----------+-------------------------------------------------------------+
+
+variables.tf (terraform)
+========================
+Tests: 8 (SUCCESSES: 8, FAILURES: 0, EXCEPTIONS: 0)
+Failures: 0 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 0, CRITICAL: 0)
+

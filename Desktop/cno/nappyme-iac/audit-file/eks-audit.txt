@@ -1,0 +1,57 @@
+2021-12-01T15:08:51.634Z	[34mINFO[0m	Detected config files: 2
+
+main.tf (terraform)
+===================
+Tests: 44 (SUCCESSES: 34, FAILURES: 10, EXCEPTIONS: 0)
+Failures: 10 (UNKNOWN: 0, LOW: 3, MEDIUM: 0, HIGH: 2, CRITICAL: 5)
+
++------------------------------------------+--------------+------------------------------------------+----------+---------------------------------------------------------------------+
+|                   TYPE                   |  MISCONF ID  |                  CHECK                   | SEVERITY |                               MESSAGE                               |
++------------------------------------------+--------------+------------------------------------------+----------+---------------------------------------------------------------------+
+|   Terraform Security Check powered by    | AVD-AWS-0039 | EKS should have the encryption of        |   HIGH   | Resource 'aws_eks_cluster.nappyme_cluster'                          |
+|                  tfsec                   |              | secrets enabled                          |          | has no encryptionConfigBlock block                                  |
+|                                          |              |                                          |          | -->tfsec.dev/docs/aws/eks/encrypt-secrets#aws/eks                   |
++                                          +--------------+------------------------------------------+----------+---------------------------------------------------------------------+
+|                                          | AVD-AWS-0040 | EKS Clusters should have the public      | CRITICAL | Resource 'aws_eks_cluster.nappyme_cluster'                          |
+|                                          |              | access disabled                          |          | has public access is explicitly set to enabled                      |
+|                                          |              |                                          |          | -->tfsec.dev/docs/aws/eks/no-public-cluster-access#aws/eks          |
++                                          +--------------+------------------------------------------+          +---------------------------------------------------------------------+
+|                                          | AVD-AWS-0041 | EKS cluster should not have open CIDR    |          | Resource 'aws_eks_cluster.nappyme_cluster' uses                     |
+|                                          |              | range for public access                  |          | the default public access cidr of 0.0.0.0/0                         |
+|                                          |              |                                          |          | -->tfsec.dev/docs/aws/eks/no-public-cluster-access-to-cidr#aws/eks  |
++                                          +--------------+------------------------------------------+----------+---------------------------------------------------------------------+
+|                                          | AVD-AWS-0057 | IAM policy should avoid use of wildcards |   HIGH   | Resource                                                            |
+|                                          |              | and instead apply the principle of least |          | 'aws_iam_role_policy.NodeGroupClusterAutoscalerPolicy'              |
+|                                          |              | privilege                                |          | defines a policy with wildcarded resources.                         |
+|                                          |              |                                          |          | -->tfsec.dev/docs/aws/iam/no-policy-wildcards#aws/iam               |
++                                          +--------------+------------------------------------------+----------+---------------------------------------------------------------------+
+|                                          | AVD-AWS-0099 | Missing description for security         |   LOW    | Resource 'aws_security_group.RDSDbAccessSGPod'                      |
+|                                          |              | group/security group rule.               |          | has egress without description.                                     |
+|                                          |              |                                          |          | -->tfsec.dev/docs/aws/vpc/add-description-to-security-group#aws/vpc |
++                                          +              +                                          +          +---------------------------------------------------------------------+
+|                                          |              |                                          |          | Resource 'aws_security_group.eks_cluster'                           |
+|                                          |              |                                          |          | has egress without description.                                     |
+|                                          |              |                                          |          | -->tfsec.dev/docs/aws/vpc/add-description-to-security-group#aws/vpc |
++                                          +              +                                          +          +---------------------------------------------------------------------+
+|                                          |              |                                          |          | Resource 'aws_security_group.eks_cluster'                           |
+|                                          |              |                                          |          | has ingress without description.                                    |
+|                                          |              |                                          |          | -->tfsec.dev/docs/aws/vpc/add-description-to-security-group#aws/vpc |
++                                          +--------------+------------------------------------------+----------+---------------------------------------------------------------------+
+|                                          | AVD-AWS-0103 | An inline egress security group rule     | CRITICAL | Resource 'aws_security_group.RDSDbAccessSGPod'                      |
+|                                          |              | allows traffic to /0.                    |          | defines a fully open egress security group.                         |
+|                                          |              |                                          |          | -->tfsec.dev/docs/aws/vpc/no-public-egress-sg#aws/vpc               |
++                                          +              +                                          +          +---------------------------------------------------------------------+
+|                                          |              |                                          |          | Resource 'aws_security_group.eks_cluster'                           |
+|                                          |              |                                          |          | defines a fully open egress security group.                         |
+|                                          |              |                                          |          | -->tfsec.dev/docs/aws/vpc/no-public-egress-sg#aws/vpc               |
++                                          +--------------+------------------------------------------+          +---------------------------------------------------------------------+
+|                                          | AVD-AWS-0106 | An inline ingress security group rule    |          | Resource 'aws_security_group.eks_cluster'                           |
+|                                          |              | allows traffic from /0.                  |          | defines a fully open ingress security group.                        |
+|                                          |              |                                          |          | -->tfsec.dev/docs/aws/vpc/no-public-ingress-sg#aws/vpc              |
++------------------------------------------+--------------+------------------------------------------+----------+---------------------------------------------------------------------+
+
+variables.tf (terraform)
+========================
+Tests: 22 (SUCCESSES: 22, FAILURES: 0, EXCEPTIONS: 0)
+Failures: 0 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 0, CRITICAL: 0)
+

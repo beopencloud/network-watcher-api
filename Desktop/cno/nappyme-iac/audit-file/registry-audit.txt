@@ -1,0 +1,24 @@
+2021-12-01T15:10:28.118Z	[34mINFO[0m	Detected config files: 2
+
+main.tf (terraform)
+===================
+Tests: 13 (SUCCESSES: 11, FAILURES: 2, EXCEPTIONS: 0)
+Failures: 2 (UNKNOWN: 0, LOW: 1, MEDIUM: 0, HIGH: 1, CRITICAL: 0)
+
++------------------------------------------+--------------+------------------------------------------+----------+----------------------------------------------------------------+
+|                   TYPE                   |  MISCONF ID  |                  CHECK                   | SEVERITY |                            MESSAGE                             |
++------------------------------------------+--------------+------------------------------------------+----------+----------------------------------------------------------------+
+|   Terraform Security Check powered by    | AVD-AWS-0031 | ECR images tags shouldn't be mutable.    |   HIGH   | Resource 'aws_ecr_repository.ecr_repository' has               |
+|                  tfsec                   |              |                                          |          | `image_tag_mutability` attribute  not set to `IMMUTABLE`       |
+|                                          |              |                                          |          | -->tfsec.dev/docs/aws/ecr/enforce-immutable-repository#aws/ecr |
++                                          +--------------+------------------------------------------+----------+----------------------------------------------------------------+
+|                                          | AVD-AWS-0033 | ECR Repository should use customer       |   LOW    | Resource 'aws_ecr_repository.ecr_repository'                   |
+|                                          |              | managed keys to allow more control       |          | does not have CMK encryption configured                        |
+|                                          |              |                                          |          | -->tfsec.dev/docs/aws/ecr/repository-customer-key#aws/ecr      |
++------------------------------------------+--------------+------------------------------------------+----------+----------------------------------------------------------------+
+
+variables.tf (terraform)
+========================
+Tests: 14 (SUCCESSES: 14, FAILURES: 0, EXCEPTIONS: 0)
+Failures: 0 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 0, CRITICAL: 0)
+

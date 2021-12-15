@@ -1,0 +1,13 @@
+2021-12-01T15:12:23.427Z	[34mINFO[0m	Detected config files: 2
+
+main.tf (terraform)
+===================
+Tests: 8 (SUCCESSES: 8, FAILURES: 0, EXCEPTIONS: 0)
+Failures: 0 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 0, CRITICAL: 0)
+
+
+variables.tf (terraform)
+========================
+Tests: 12 (SUCCESSES: 12, FAILURES: 0, EXCEPTIONS: 0)
+Failures: 0 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 0, CRITICAL: 0)
+

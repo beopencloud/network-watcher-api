@@ -1,0 +1,20 @@
+2021-12-01T15:09:06.248Z	[34mINFO[0m	Detected config files: 2
+
+main.tf (terraform)
+===================
+Tests: 34 (SUCCESSES: 33, FAILURES: 1, EXCEPTIONS: 0)
+Failures: 1 (UNKNOWN: 0, LOW: 1, MEDIUM: 0, HIGH: 0, CRITICAL: 0)
+
++------------------------------------------+--------------+------------------------------------------+----------+---------------------------------------------------------------------+
+|                   TYPE                   |  MISCONF ID  |                  CHECK                   | SEVERITY |                               MESSAGE                               |
++------------------------------------------+--------------+------------------------------------------+----------+---------------------------------------------------------------------+
+|   Terraform Security Check powered by    | AVD-AWS-0099 | Missing description for security         |   LOW    | Resource 'aws_security_group.RDS_SG'                                |
+|                  tfsec                   |              | group/security group rule.               |          | has ingress without description.                                    |
+|                                          |              |                                          |          | -->tfsec.dev/docs/aws/vpc/add-description-to-security-group#aws/vpc |
++------------------------------------------+--------------+------------------------------------------+----------+---------------------------------------------------------------------+
+
+variables.tf (terraform)
+========================
+Tests: 44 (SUCCESSES: 44, FAILURES: 0, EXCEPTIONS: 0)
+Failures: 0 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 0, CRITICAL: 0)
+

@@ -1,0 +1,448 @@
+2021-12-01T15:11:17.418Z	[34mINFO[0m	Detected config files: 3
+
+examples/driver.yaml (kubernetes)
+=================================
+Tests: 99 (SUCCESSES: 28, FAILURES: 71, EXCEPTIONS: 0)
+Failures: 71 (UNKNOWN: 0, LOW: 36, MEDIUM: 31, HIGH: 4, CRITICAL: 0)
+
++---------------------------+------------+----------------------------------------+----------+--------------------------------------------+
+|           TYPE            | MISCONF ID |                 CHECK                  | SEVERITY |                  MESSAGE                   |
++---------------------------+------------+----------------------------------------+----------+--------------------------------------------+
+| Kubernetes Security Check |   KSV001   | Process can elevate its own privileges |  MEDIUM  | Container 'csi-driver-registrar' of        |
+|                           |            |                                        |          | DaemonSet 'efs-csi-node' should set        |
+|                           |            |                                        |          | 'securityContext.allowPrivilegeEscalation' |
+|                           |            |                                        |          | to false                                   |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv001        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'csi-provisioner' of Deployment  |
+|                           |            |                                        |          | 'efs-csi-controller' should set            |
+|                           |            |                                        |          | 'securityContext.allowPrivilegeEscalation' |
+|                           |            |                                        |          | to false                                   |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv001        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'efs-plugin' of                  |
+|                           |            |                                        |          | DaemonSet 'efs-csi-node' should set        |
+|                           |            |                                        |          | 'securityContext.allowPrivilegeEscalation' |
+|                           |            |                                        |          | to false                                   |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv001        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'efs-plugin' of Deployment       |
+|                           |            |                                        |          | 'efs-csi-controller' should set            |
+|                           |            |                                        |          | 'securityContext.allowPrivilegeEscalation' |
+|                           |            |                                        |          | to false                                   |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv001        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'liveness-probe' of              |
+|                           |            |                                        |          | DaemonSet 'efs-csi-node' should set        |
+|                           |            |                                        |          | 'securityContext.allowPrivilegeEscalation' |
+|                           |            |                                        |          | to false                                   |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv001        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'liveness-probe' of Deployment   |
+|                           |            |                                        |          | 'efs-csi-controller' should set            |
+|                           |            |                                        |          | 'securityContext.allowPrivilegeEscalation' |
+|                           |            |                                        |          | to false                                   |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv001        |
++                           +------------+----------------------------------------+----------+--------------------------------------------+
+|                           |   KSV003   | Default capabilities not dropped       |   LOW    | Container 'csi-driver-registrar'           |
+|                           |            |                                        |          | of DaemonSet 'efs-csi-node'                |
+|                           |            |                                        |          | should add 'ALL' to                        |
+|                           |            |                                        |          | 'securityContext.capabilities.drop'        |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv003        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'csi-provisioner' of             |
+|                           |            |                                        |          | Deployment 'efs-csi-controller'            |
+|                           |            |                                        |          | should add 'ALL' to                        |
+|                           |            |                                        |          | 'securityContext.capabilities.drop'        |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv003        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'efs-plugin' of DaemonSet        |
+|                           |            |                                        |          | 'efs-csi-node' should add 'ALL' to         |
+|                           |            |                                        |          | 'securityContext.capabilities.drop'        |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv003        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'efs-plugin' of Deployment       |
+|                           |            |                                        |          | 'efs-csi-controller' should add 'ALL'      |
+|                           |            |                                        |          | to 'securityContext.capabilities.drop'     |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv003        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'liveness-probe' of DaemonSet    |
+|                           |            |                                        |          | 'efs-csi-node' should add 'ALL' to         |
+|                           |            |                                        |          | 'securityContext.capabilities.drop'        |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv003        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'liveness-probe' of Deployment   |
+|                           |            |                                        |          | 'efs-csi-controller' should add 'ALL'      |
+|                           |            |                                        |          | to 'securityContext.capabilities.drop'     |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv003        |
++                           +------------+----------------------------------------+----------+--------------------------------------------+
+|                           |   KSV009   | Access to host network                 |   HIGH   | DaemonSet 'efs-csi-node' should not set    |
+|                           |            |                                        |          | 'spec.template.spec.hostNetwork' to true   |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv009        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Deployment 'efs-csi-controller'            |
+|                           |            |                                        |          | should not set                             |
+|                           |            |                                        |          | 'spec.template.spec.hostNetwork' to true   |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv009        |
++                           +------------+----------------------------------------+----------+--------------------------------------------+
+|                           |   KSV011   | CPU not limited                        |   LOW    | Container 'csi-driver-registrar'           |
+|                           |            |                                        |          | of DaemonSet 'efs-csi-node'                |
+|                           |            |                                        |          | should set 'resources.limits.cpu'          |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv011        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'csi-provisioner' of             |
+|                           |            |                                        |          | Deployment 'efs-csi-controller'            |
+|                           |            |                                        |          | should set 'resources.limits.cpu'          |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv011        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'efs-plugin' of                  |
+|                           |            |                                        |          | DaemonSet 'efs-csi-node' should            |
+|                           |            |                                        |          | set 'resources.limits.cpu'                 |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv011        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'efs-plugin' of                  |
+|                           |            |                                        |          | Deployment 'efs-csi-controller'            |
+|                           |            |                                        |          | should set 'resources.limits.cpu'          |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv011        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'liveness-probe' of              |
+|                           |            |                                        |          | DaemonSet 'efs-csi-node' should            |
+|                           |            |                                        |          | set 'resources.limits.cpu'                 |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv011        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'liveness-probe' of              |
+|                           |            |                                        |          | Deployment 'efs-csi-controller'            |
+|                           |            |                                        |          | should set 'resources.limits.cpu'          |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv011        |
++                           +------------+----------------------------------------+----------+--------------------------------------------+
+|                           |   KSV012   | Runs as root user                      |  MEDIUM  | Container 'csi-driver-registrar' of        |
+|                           |            |                                        |          | DaemonSet 'efs-csi-node' should set        |
+|                           |            |                                        |          | 'securityContext.runAsNonRoot' to true     |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv012        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'csi-provisioner' of             |
+|                           |            |                                        |          | Deployment 'efs-csi-controller' should     |
+|                           |            |                                        |          | set 'securityContext.runAsNonRoot' to      |
+|                           |            |                                        |          | true -->avd.aquasec.com/appshield/ksv012   |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'efs-plugin' of                  |
+|                           |            |                                        |          | DaemonSet 'efs-csi-node' should set        |
+|                           |            |                                        |          | 'securityContext.runAsNonRoot' to true     |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv012        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'efs-plugin' of Deployment       |
+|                           |            |                                        |          | 'efs-csi-controller' should set            |
+|                           |            |                                        |          | 'securityContext.runAsNonRoot' to true     |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv012        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'liveness-probe' of              |
+|                           |            |                                        |          | DaemonSet 'efs-csi-node' should set        |
+|                           |            |                                        |          | 'securityContext.runAsNonRoot' to true     |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv012        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'liveness-probe' of Deployment   |
+|                           |            |                                        |          | 'efs-csi-controller' should set            |
+|                           |            |                                        |          | 'securityContext.runAsNonRoot' to true     |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv012        |
++                           +------------+----------------------------------------+----------+--------------------------------------------+
+|                           |   KSV014   | Root file system is not read-only      |   LOW    | Container 'csi-driver-registrar' of        |
+|                           |            |                                        |          | DaemonSet 'efs-csi-node' should set        |
+|                           |            |                                        |          | 'securityContext.readOnlyRootFilesystem'   |
+|                           |            |                                        |          | to true                                    |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv014        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'csi-provisioner'                |
+|                           |            |                                        |          | of Deployment                              |
+|                           |            |                                        |          | 'efs-csi-controller' should set            |
+|                           |            |                                        |          | 'securityContext.readOnlyRootFilesystem'   |
+|                           |            |                                        |          | to true                                    |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv014        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'efs-plugin' of                  |
+|                           |            |                                        |          | DaemonSet 'efs-csi-node' should set        |
+|                           |            |                                        |          | 'securityContext.readOnlyRootFilesystem'   |
+|                           |            |                                        |          | to true                                    |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv014        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'efs-plugin' of Deployment       |
+|                           |            |                                        |          | 'efs-csi-controller' should set            |
+|                           |            |                                        |          | 'securityContext.readOnlyRootFilesystem'   |
+|                           |            |                                        |          | to true                                    |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv014        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'liveness-probe' of              |
+|                           |            |                                        |          | DaemonSet 'efs-csi-node' should set        |
+|                           |            |                                        |          | 'securityContext.readOnlyRootFilesystem'   |
+|                           |            |                                        |          | to true                                    |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv014        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'liveness-probe' of Deployment   |
+|                           |            |                                        |          | 'efs-csi-controller' should set            |
+|                           |            |                                        |          | 'securityContext.readOnlyRootFilesystem'   |
+|                           |            |                                        |          | to true                                    |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv014        |
++                           +------------+----------------------------------------+          +--------------------------------------------+
+|                           |   KSV015   | CPU requests not specified             |          | Container 'csi-driver-registrar'           |
+|                           |            |                                        |          | of DaemonSet 'efs-csi-node' should         |
+|                           |            |                                        |          | set 'resources.requests.cpu'               |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv015        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'csi-provisioner' of             |
+|                           |            |                                        |          | Deployment 'efs-csi-controller'            |
+|                           |            |                                        |          | should set 'resources.requests.cpu'        |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv015        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'efs-plugin' of                  |
+|                           |            |                                        |          | DaemonSet 'efs-csi-node' should            |
+|                           |            |                                        |          | set 'resources.requests.cpu'               |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv015        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'efs-plugin' of Deployment       |
+|                           |            |                                        |          | 'efs-csi-controller' should                |
+|                           |            |                                        |          | set 'resources.requests.cpu'               |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv015        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'liveness-probe' of              |
+|                           |            |                                        |          | DaemonSet 'efs-csi-node' should            |
+|                           |            |                                        |          | set 'resources.requests.cpu'               |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv015        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'liveness-probe' of              |
+|                           |            |                                        |          | Deployment 'efs-csi-controller'            |
+|                           |            |                                        |          | should set 'resources.requests.cpu'        |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv015        |
++                           +------------+----------------------------------------+          +--------------------------------------------+
+|                           |   KSV016   | Memory requests not specified          |          | Container 'csi-driver-registrar'           |
+|                           |            |                                        |          | of DaemonSet 'efs-csi-node' should         |
+|                           |            |                                        |          | set 'resources.requests.memory'            |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv016        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'csi-provisioner' of             |
+|                           |            |                                        |          | Deployment 'efs-csi-controller'            |
+|                           |            |                                        |          | should set 'resources.requests.memory'     |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv016        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'efs-plugin' of                  |
+|                           |            |                                        |          | DaemonSet 'efs-csi-node' should            |
+|                           |            |                                        |          | set 'resources.requests.memory'            |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv016        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'efs-plugin' of Deployment       |
+|                           |            |                                        |          | 'efs-csi-controller' should                |
+|                           |            |                                        |          | set 'resources.requests.memory'            |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv016        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'liveness-probe' of              |
+|                           |            |                                        |          | DaemonSet 'efs-csi-node' should            |
+|                           |            |                                        |          | set 'resources.requests.memory'            |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv016        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'liveness-probe' of              |
+|                           |            |                                        |          | Deployment 'efs-csi-controller'            |
+|                           |            |                                        |          | should set 'resources.requests.memory'     |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv016        |
++                           +------------+----------------------------------------+----------+--------------------------------------------+
+|                           |   KSV017   | Privileged container                   |   HIGH   | Container 'efs-plugin' of                  |
+|                           |            |                                        |          | DaemonSet 'efs-csi-node' should set        |
+|                           |            |                                        |          | 'securityContext.privileged' to false      |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv017        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'efs-plugin' of Deployment       |
+|                           |            |                                        |          | 'efs-csi-controller' should set            |
+|                           |            |                                        |          | 'securityContext.privileged' to false      |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv017        |
++                           +------------+----------------------------------------+----------+--------------------------------------------+
+|                           |   KSV018   | Memory not limited                     |   LOW    | Container 'csi-driver-registrar'           |
+|                           |            |                                        |          | of DaemonSet 'efs-csi-node' should         |
+|                           |            |                                        |          | set 'resources.limits.memory'              |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv018        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'csi-provisioner' of             |
+|                           |            |                                        |          | Deployment 'efs-csi-controller'            |
+|                           |            |                                        |          | should set 'resources.limits.memory'       |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv018        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'efs-plugin' of                  |
+|                           |            |                                        |          | DaemonSet 'efs-csi-node' should            |
+|                           |            |                                        |          | set 'resources.limits.memory'              |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv018        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'efs-plugin' of Deployment       |
+|                           |            |                                        |          | 'efs-csi-controller' should                |
+|                           |            |                                        |          | set 'resources.limits.memory'              |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv018        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'liveness-probe' of              |
+|                           |            |                                        |          | DaemonSet 'efs-csi-node' should            |
+|                           |            |                                        |          | set 'resources.limits.memory'              |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv018        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'liveness-probe' of              |
+|                           |            |                                        |          | Deployment 'efs-csi-controller'            |
+|                           |            |                                        |          | should set 'resources.limits.memory'       |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv018        |
++                           +------------+----------------------------------------+----------+--------------------------------------------+
+|                           |   KSV019   | Seccomp policies disabled              |  MEDIUM  | Container 'csi-driver-registrar'           |
+|                           |            |                                        |          | of DaemonSet 'efs-csi-node'                |
+|                           |            |                                        |          | should specify a seccomp profile           |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv019        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'csi-provisioner' of             |
+|                           |            |                                        |          | Deployment 'efs-csi-controller'            |
+|                           |            |                                        |          | should specify a seccomp profile           |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv019        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'efs-plugin' of                  |
+|                           |            |                                        |          | DaemonSet 'efs-csi-node' should            |
+|                           |            |                                        |          | specify a seccomp profile                  |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv019        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'efs-plugin' of                  |
+|                           |            |                                        |          | Deployment 'efs-csi-controller'            |
+|                           |            |                                        |          | should specify a seccomp profile           |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv019        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'liveness-probe' of              |
+|                           |            |                                        |          | DaemonSet 'efs-csi-node' should            |
+|                           |            |                                        |          | specify a seccomp profile                  |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv019        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'liveness-probe' of              |
+|                           |            |                                        |          | Deployment 'efs-csi-controller'            |
+|                           |            |                                        |          | should specify a seccomp profile           |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv019        |
++                           +------------+----------------------------------------+          +--------------------------------------------+
+|                           |   KSV020   | Runs with low user ID                  |          | Container 'csi-driver-registrar' of        |
+|                           |            |                                        |          | DaemonSet 'efs-csi-node' should set        |
+|                           |            |                                        |          | 'securityContext.runAsUser' > 10000        |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv020        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'csi-provisioner' of             |
+|                           |            |                                        |          | Deployment 'efs-csi-controller' should     |
+|                           |            |                                        |          | set 'securityContext.runAsUser' > 10000    |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv020        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'efs-plugin' of                  |
+|                           |            |                                        |          | DaemonSet 'efs-csi-node' should set        |
+|                           |            |                                        |          | 'securityContext.runAsUser' > 10000        |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv020        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'efs-plugin' of Deployment       |
+|                           |            |                                        |          | 'efs-csi-controller' should set            |
+|                           |            |                                        |          | 'securityContext.runAsUser' > 10000        |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv020        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'liveness-probe' of              |
+|                           |            |                                        |          | DaemonSet 'efs-csi-node' should set        |
+|                           |            |                                        |          | 'securityContext.runAsUser' > 10000        |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv020        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'liveness-probe' of Deployment   |
+|                           |            |                                        |          | 'efs-csi-controller' should set            |
+|                           |            |                                        |          | 'securityContext.runAsUser' > 10000        |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv020        |
++                           +------------+----------------------------------------+          +--------------------------------------------+
+|                           |   KSV021   | Runs with low group ID                 |          | Container 'csi-driver-registrar' of        |
+|                           |            |                                        |          | DaemonSet 'efs-csi-node' should set        |
+|                           |            |                                        |          | 'securityContext.runAsGroup' > 10000       |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv021        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'csi-provisioner' of             |
+|                           |            |                                        |          | Deployment 'efs-csi-controller' should     |
+|                           |            |                                        |          | set 'securityContext.runAsGroup' > 10000   |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv021        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'efs-plugin' of                  |
+|                           |            |                                        |          | DaemonSet 'efs-csi-node' should set        |
+|                           |            |                                        |          | 'securityContext.runAsGroup' > 10000       |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv021        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'efs-plugin' of Deployment       |
+|                           |            |                                        |          | 'efs-csi-controller' should set            |
+|                           |            |                                        |          | 'securityContext.runAsGroup' > 10000       |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv021        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'liveness-probe' of              |
+|                           |            |                                        |          | DaemonSet 'efs-csi-node' should set        |
+|                           |            |                                        |          | 'securityContext.runAsGroup' > 10000       |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv021        |
++                           +            +                                        +          +--------------------------------------------+
+|                           |            |                                        |          | Container 'liveness-probe' of Deployment   |
+|                           |            |                                        |          | 'efs-csi-controller' should set            |
+|                           |            |                                        |          | 'securityContext.runAsGroup' > 10000       |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv021        |
++                           +------------+----------------------------------------+          +--------------------------------------------+
+|                           |   KSV023   | hostPath volumes mounted               |          | DaemonSet 'efs-csi-node' should not        |
+|                           |            |                                        |          | set 'spec.template.volumes.hostPath'       |
+|                           |            |                                        |          | -->avd.aquasec.com/appshield/ksv023        |
++---------------------------+------------+----------------------------------------+----------+--------------------------------------------+
+
+main.tf (terraform)
+===================
+Tests: 50 (SUCCESSES: 39, FAILURES: 11, EXCEPTIONS: 0)
+Failures: 11 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 11, CRITICAL: 0)
+
++------------------------------------------+--------------+------------------------------------------+----------+-------------------------------------------------------+
+|                   TYPE                   |  MISCONF ID  |                  CHECK                   | SEVERITY |                        MESSAGE                        |
++------------------------------------------+--------------+------------------------------------------+----------+-------------------------------------------------------+
+|   Terraform Security Check powered by    | AVD-AWS-0057 | IAM policy should avoid use of wildcards |   HIGH   | Resource                                              |
+|                  tfsec                   |              | and instead apply the principle of least |          | 'aws_iam_policy.ALBIngressControllerIAMPolicy'        |
+|                                          |              | privilege                                |          | defines a policy with wildcarded resources.           |
+|                                          |              |                                          |          | -->tfsec.dev/docs/aws/iam/no-policy-wildcards#aws/iam |
++                                          +              +                                          +          +                                                       +
+|                                          |              |                                          |          |                                                       |
+|                                          |              |                                          |          |                                                       |
+|                                          |              |                                          |          |                                                       |
+|                                          |              |                                          |          |                                                       |
++                                          +              +                                          +          +                                                       +
+|                                          |              |                                          |          |                                                       |
+|                                          |              |                                          |          |                                                       |
+|                                          |              |                                          |          |                                                       |
+|                                          |              |                                          |          |                                                       |
++                                          +              +                                          +          +                                                       +
+|                                          |              |                                          |          |                                                       |
+|                                          |              |                                          |          |                                                       |
+|                                          |              |                                          |          |                                                       |
+|                                          |              |                                          |          |                                                       |
++                                          +              +                                          +          +                                                       +
+|                                          |              |                                          |          |                                                       |
+|                                          |              |                                          |          |                                                       |
+|                                          |              |                                          |          |                                                       |
+|                                          |              |                                          |          |                                                       |
++                                          +              +                                          +          +                                                       +
+|                                          |              |                                          |          |                                                       |
+|                                          |              |                                          |          |                                                       |
+|                                          |              |                                          |          |                                                       |
+|                                          |              |                                          |          |                                                       |
++                                          +              +                                          +          +                                                       +
+|                                          |              |                                          |          |                                                       |
+|                                          |              |                                          |          |                                                       |
+|                                          |              |                                          |          |                                                       |
+|                                          |              |                                          |          |                                                       |
++                                          +              +                                          +          +                                                       +
+|                                          |              |                                          |          |                                                       |
+|                                          |              |                                          |          |                                                       |
+|                                          |              |                                          |          |                                                       |
+|                                          |              |                                          |          |                                                       |
++                                          +              +                                          +          +-------------------------------------------------------+
+|                                          |              |                                          |          | Resource                                              |
+|                                          |              |                                          |          | 'aws_iam_policy.AmazonEKS_EFS_CSI_Driver_Policy'      |
+|                                          |              |                                          |          | defines a policy with wildcarded resources.           |
+|                                          |              |                                          |          | -->tfsec.dev/docs/aws/iam/no-policy-wildcards#aws/iam |
++                                          +              +                                          +          +                                                       +
+|                                          |              |                                          |          |                                                       |
+|                                          |              |                                          |          |                                                       |
+|                                          |              |                                          |          |                                                       |
+|                                          |              |                                          |          |                                                       |
++                                          +              +                                          +          +                                                       +
+|                                          |              |                                          |          |                                                       |
+|                                          |              |                                          |          |                                                       |
+|                                          |              |                                          |          |                                                       |
+|                                          |              |                                          |          |                                                       |
++------------------------------------------+--------------+------------------------------------------+----------+-------------------------------------------------------+
+
+variables.tf (terraform)
+========================
+Tests: 10 (SUCCESSES: 10, FAILURES: 0, EXCEPTIONS: 0)
+Failures: 0 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 0, CRITICAL: 0)
+

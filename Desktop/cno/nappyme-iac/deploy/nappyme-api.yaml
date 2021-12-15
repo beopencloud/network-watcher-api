@@ -1,0 +1,96 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nappyme-api
+  name: nappyme-api
+  namespace: nappyme-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nappyme-api
+  template:
+    metadata:
+      labels:
+        app: nappyme-api
+    spec:
+      affinity:
+       nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: "vpc.amazonaws.com/has-trunk-attached"
+              operator: In
+              values:
+                - "true"
+      containers:
+      - image: fmedery/app:latest
+        name: nappyme-api
+        resources: {}
+        env:
+        - name: HOST
+          valueFrom:
+            secretKeyRef:
+              name: rds
+              key: host
+        - name: DB_NAME
+          value: "nappymedb"
+        - name: DB_USERNAME
+          value: "root"
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: rds
+              key: password
+        volumeMounts:
+        - name: nappyme-pvc
+          mountPath: /data
+      volume:
+      - name: nappyme-pvc
+        persistentVolumeClaim:
+          claimName: nappyme-efs  
+
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nappyme-efs
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: efs-sc
+  resources:
+    requests:
+      storage: 5Gi
+
+---
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: efs-sc
+provisioner: efs.csi.aws.com
+parameters:
+  provisioningMode: efs-ap
+  fileSystemId: fs-08e7d6b1116c4927a
+  directoryPerms: "700"
+  gidRangeStart: "1000" # optional
+  gidRangeEnd: "2000" # optional
+  basePath: "/dynamic_provisioning" # optional
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nappyme-api
+spec:
+  ports:
+  - protocol: TCP
+    port: 80
+    nodePort: 30036
+  selector:
+    run: nappyme-api
+  type: NodePort
+

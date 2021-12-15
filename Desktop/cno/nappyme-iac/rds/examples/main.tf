@@ -1,0 +1,25 @@
+module "rds" {
+    source               = "../"
+    identifier           = "rds-instance-nappyme"
+    allocated_storage    = 20
+    engine               = "postgres"
+    engine_version       = "12.5"
+    instance_class       = "db.m5.large"
+    name                 = "mydb"
+    rds_port             = 5432
+    rds_sg               = "rds-sgs-nappyme"
+    storage_type         = "gp2"
+    vpc_name             = "nappyme-vpc"
+    environment          = "dev"
+    username             = "foo"
+    password             = "foobarbaz"
+    parameter_group_name = "default.mysql5.7"
+    skip_final_snapshot  = true
+    db_subnet_group_name = "db_sub_main"
+    deletion_protection  = false
+    aws_region           = "eu-west-1"
+    kms_key_id           = "298e4f1d-dc7d-4b0d-9b5f-f28b5721960a"
+    tags                 = {}
+    cluster_id           = "nappyme-tools-dev"
+    cluster_name         = "nappyme-tools"
+}

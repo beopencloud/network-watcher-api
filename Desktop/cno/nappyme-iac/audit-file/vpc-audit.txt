@@ -1,0 +1,44 @@
+2021-12-01T15:08:32.869Z	[34mINFO[0m	Detected config files: 2
+
+main.tf (terraform)
+===================
+Tests: 67 (SUCCESSES: 61, FAILURES: 6, EXCEPTIONS: 0)
+Failures: 6 (UNKNOWN: 0, LOW: 2, MEDIUM: 0, HIGH: 0, CRITICAL: 4)
+
++------------------------------------------+--------------+------------------------------------------+----------+---------------------------------------------------------------------+
+|                   TYPE                   |  MISCONF ID  |                  CHECK                   | SEVERITY |                               MESSAGE                               |
++------------------------------------------+--------------+------------------------------------------+----------+---------------------------------------------------------------------+
+|   Terraform Security Check powered by    | AVD-AWS-0099 | Missing description for security         |   LOW    | Resource 'aws_security_group.security_group_vpc'                    |
+|                  tfsec                   |              | group/security group rule.               |          | has egress without description.                                     |
+|                                          |              |                                          |          | -->tfsec.dev/docs/aws/vpc/add-description-to-security-group#aws/vpc |
++                                          +              +                                          +          +---------------------------------------------------------------------+
+|                                          |              |                                          |          | Resource 'aws_security_group.security_group_vpc'                    |
+|                                          |              |                                          |          | has ingress without description.                                    |
+|                                          |              |                                          |          | -->tfsec.dev/docs/aws/vpc/add-description-to-security-group#aws/vpc |
++                                          +--------------+------------------------------------------+----------+---------------------------------------------------------------------+
+|                                          | AVD-AWS-0102 | An ingress Network ACL rule allows ALL   | CRITICAL | Resource                                                            |
+|                                          |              | ports.                                   |          | 'aws_network_acl_rule.eks-ingress-external-zone-rules[0]'           |
+|                                          |              |                                          |          | defines a fully open ingress Network                                |
+|                                          |              |                                          |          | ACL rule with ALL ports open.                                       |
+|                                          |              |                                          |          | -->tfsec.dev/docs/aws/vpc/no-excessive-port-access#aws/vpc          |
++                                          +              +                                          +          +---------------------------------------------------------------------+
+|                                          |              |                                          |          | Resource                                                            |
+|                                          |              |                                          |          | 'aws_network_acl_rule.ingress-internal-zone-rules[0]'               |
+|                                          |              |                                          |          | defines a fully open ingress Network                                |
+|                                          |              |                                          |          | ACL rule with ALL ports open.                                       |
+|                                          |              |                                          |          | -->tfsec.dev/docs/aws/vpc/no-excessive-port-access#aws/vpc          |
++                                          +--------------+------------------------------------------+          +---------------------------------------------------------------------+
+|                                          | AVD-AWS-0103 | An inline egress security group rule     |          | Resource 'aws_security_group.security_group_vpc'                    |
+|                                          |              | allows traffic to /0.                    |          | defines a fully open egress security group.                         |
+|                                          |              |                                          |          | -->tfsec.dev/docs/aws/vpc/no-public-egress-sg#aws/vpc               |
++                                          +--------------+------------------------------------------+          +---------------------------------------------------------------------+
+|                                          | AVD-AWS-0106 | An inline ingress security group rule    |          | Resource 'aws_security_group.security_group_vpc'                    |
+|                                          |              | allows traffic from /0.                  |          | defines a fully open ingress security group.                        |
+|                                          |              |                                          |          | -->tfsec.dev/docs/aws/vpc/no-public-ingress-sg#aws/vpc              |
++------------------------------------------+--------------+------------------------------------------+----------+---------------------------------------------------------------------+
+
+variables.tf (terraform)
+========================
+Tests: 32 (SUCCESSES: 32, FAILURES: 0, EXCEPTIONS: 0)
+Failures: 0 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 0, CRITICAL: 0)
+
